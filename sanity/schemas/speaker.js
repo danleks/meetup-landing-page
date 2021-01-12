@@ -21,19 +21,43 @@ export default {
             type: 'string',
         },
         {
-            name: 'facebookLink',
-            title: 'Facebook Link',
-            type: 'string',
+            name: 'topics',
+            title: 'Speaker topic / add multiple if needed',
+            type: 'array',
+            of: [
+                {
+                    type: 'reference',
+                    to: [{ type: 'topic' }],
+                }
+            ]
         },
         {
-            name: 'twitterLink',
-            title: 'Twitter Link',
-            type: 'string',
+            title: 'Conference days',
+            name: 'confDays',
+            type: 'array',
+            of: [{type: 'string'}],
+            options: {
+                list: [
+                    {title: 'Day 1', value: 'day1'},
+                    {title: 'Day 2', value: 'day2'},
+                    {title: 'Day 3', value: 'day3'},
+                ]
+            }
         },
         {
-            name: 'linkedinLink',
-            title: 'Linkedin Link',
-            type: 'string',
+            type: "string",
+            name: 'facebook',
+            title: 'Facebook'
+        },
+        {
+            type: "string",
+            name: 'twitter',
+            title: 'Twitter'
+        },
+        {
+            type: "string",
+            name: 'linkedin',
+            title: 'Linkedin'
         },
         {
             name: 'image',
