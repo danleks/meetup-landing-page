@@ -54,24 +54,24 @@ const ImgStyles = styled(Img)`
   
 `;
 
-const Card = ({ image, name, description, facebookLink, twitterLink, linkedinLink }) => (
+const Card = ({ image, name, description, facebook, twitter, linkedin }) => (
     <CardStyles>
         <ImgStyles fluid={image.asset.fluid} alt={name}/>
         <h3 className='center'>{ name }</h3>
         <p className='center'>{ description }</p>
         <ul>
             <li>
-                <a href={facebookLink} target="_blank" rel="noopener noreferrer">
+                <a href={facebook} target="_blank" rel="noopener noreferrer">
                     <FacebookIcon />
                 </a>
             </li>
             <li>
-                <a href={twitterLink} target="_blank" rel="noopener noreferrer">
+                <a href={twitter} target="_blank" rel="noopener noreferrer">
                     <TwitterIcon />
                 </a>
             </li>
             <li>
-                <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
+                <a href={linkedin} target="_blank" rel="noopener noreferrer">
                     <LinkedinIcon />
                 </a>
             </li>
