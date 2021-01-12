@@ -45,22 +45,22 @@ const SpeakersTemplate = () => {
         query {
             speakers: allSanitySpeaker {
                 nodes {
-                  name
-                  order
-                  description
-                  facebookLink
-                  linkedinLink
-                  twitterLink
-                  image {
-                    asset {
-                      fluid(maxWidth: 200) {
-                        ...GatsbySanityImageFluid
+                      name
+                      order
+                      description
+                      facebook
+                      twitter
+                      linkedin
+                      image {
+                        asset {
+                          fluid(maxWidth: 200) {
+                            ...GatsbySanityImageFluid
+                          }
+                        }
                       }
                     }
+                   }
                   }
-                }
-               }
-             }
     `);
     console.log(speakers);
     return (
