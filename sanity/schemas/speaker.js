@@ -20,35 +20,11 @@ export default {
             title: 'Description',
             type: 'string',
         },
-        {
-            title: 'Schedule',
-            name: 'schedule',
-            type: 'array',
-            of: [{ type: 'scheduleDetails' }]
-        },
         // {
-        //     name: 'topics',
-        //     title: 'Speaker topic / add multiple if needed',
+        //     title: 'Schedule',
+        //     name: 'schedule',
         //     type: 'array',
-        //     of: [
-        //         {
-        //             type: 'reference',
-        //             to: [{ type: 'topic' }],
-        //         }
-        //     ]
-        // },
-        // {
-        //     title: 'Conference days',
-        //     name: 'confDays',
-        //     type: 'array',
-        //     of: [{type: 'string'}],
-        //     options: {
-        //         list: [
-        //             {title: 'Day 1', value: 'day1'},
-        //             {title: 'Day 2', value: 'day2'},
-        //             {title: 'Day 3', value: 'day3'},
-        //         ]
-        //     }
+        //     of: [{ type: 'scheduleDetails' }]
         // },
         {
             type: "string",
