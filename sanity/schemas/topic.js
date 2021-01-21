@@ -6,9 +6,10 @@ export default {
     type: 'document',
     fields: [
         {
-            title: ' Add topic title',
             name: 'topic',
+            title: 'Add topic',
             type: 'string',
+            description: 'Add a conference topic. It can be assigned to a speaker when setting up conference schedule',
         },
     ]
-};
+}
