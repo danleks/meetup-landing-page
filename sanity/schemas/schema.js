@@ -6,8 +6,9 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // custom schemas
 import speaker from "./speaker";
-import topic from "./topic";
 import scheduleDetails from './scheduleDetails';
+import confSchedule from './confSchedule';
+import topic from './topic';
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -18,7 +19,8 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
       speaker,
-      topic,
       scheduleDetails,
+      confSchedule,
+      topic
   ]),
 })
