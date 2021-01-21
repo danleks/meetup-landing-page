@@ -1,13 +1,15 @@
+import React from 'react';
+
 // 1. Import the TimeInput react custom component
 import TimeInput from '../components/TimeInput';
 
 // 2. List of conference days and topics
 const days = ['Day 1', 'Day 2', 'Day 3'];
-const topics = ['PAPER PROTOTYPING APPLICATIONS', 'HANDS-ON WEB AUDIO', 'CONVERSION RATE OPTIMIZATION TECHNIQUES IN ECOMMERCE', 'MAKING DOG FOOD PART OF A BALANCED DIET', 'WEB FONTS PERFORMANCE', 'AN INTRODUCTION TO TOUCH AND POINTER EVENTS', 'MODULAR DESIGN AT WORK', 'THE DESIGNER’S GUIDE TO BEING ESSENTIAL'];
+const topics = ['Paper Prototyping Applications', 'hands-on Web Audio', 'Conversion Rate Optimization Techniques in Ecommerce', 'Making Dog Food Part of a Balanced Diet', 'Web Fonts Performance', 'an Introduction to Touch and Pointer Events', 'Modular Design at Work', 'the Designer’s Guide to Being Essential'];
 
 // 3. Validate function which is invoked on user input
 const verifyInput  = scheduleDetails => {
-    const { speakerTopic, startSpeech, endSpeech, confDay} = scheduleDetails;
+    const { currentSpeaker, speakerTopic, startSpeech, endSpeech,} = scheduleDetails;
 
     if (!speakerTopic) {
         return 'Please select a topic'
@@ -18,8 +20,8 @@ const verifyInput  = scheduleDetails => {
     if (!endSpeech) {
         return 'Choose when the speaker ends the speech'
     }
-    if (!confDay) {
-        return 'Choose the days when the speakers gives the speech'
+    if (!currentSpeaker) {
+        return 'Choose the speaker'
     }
 
     return startSpeech < endSpeech ? true : `Incorrect time interval, the speaker should start the speech earlier before he ends the speech`
@@ -35,15 +37,19 @@ export default {
 
     fields: [
         {
+            name: 'currentSpeaker',
+            title: 'Speaker',
+            description: 'Select a speaker',
+            type: 'reference',
+            to: [{ type: 'speaker' }]
+        },
+        {
             // 5. Enable editors to input a string from a predefined list of topics
             name: 'speakerTopic',
             title: 'Speaker topic',
             description: 'Select the topic',
-            type: 'string',
-            options: {
-                list: topics,
-                //layout: 'radio' // <-- defaults to 'dropdown'
-              }
+            type: 'reference',
+            to: [{ type: 'topic' }],
         },
         {
             // 6. Enable editors to input a point in time using a custom input component
@@ -61,31 +67,21 @@ export default {
             description: 'Choose when the speeker ends the speech',
             inputComponent: TimeInput
         },
-        {
-            // 8. Enable editors to choose a day for the speech
-            name: 'confDay',
-            title: 'Conference day',
-            type: 'string',
-            description: 'Select conference day',
-            options: {
-                list: days,
-                layout: 'radio'
-            }
-        }
     ],
     // 8. Define how scheduleDetails object will render in the Studio
     preview: {
         select: {
-            speakerTopic: 'speakerTopic',
+            currentSpeaker: 'currentSpeaker.name',
+            imageUrl: 'currentSpeaker.image.asset.url',
+            speakerTopic: 'speakerTopic.topic',
             startSpeech: 'startSpeech',
             endSpeech: 'endSpeech',
-            confDay: 'confDay',
         },
-        prepare({ speakerTopic, startSpeech, endSpeech, confDay }) {
-            console.log(speakerTopic)
+        prepare({ currentSpeaker, imageUrl, speakerTopic, startSpeech, endSpeech, }) {
             return {
-                title: speakerTopic,
-                subtitle: `${startSpeech} - ${endSpeech}, ${confDay}`
+                title: `${currentSpeaker} - ${speakerTopic}`,
+                subtitle: `${startSpeech} - ${endSpeech}`,
+                media: <img src={imageUrl} alt={`${currentSpeaker}`} />
             }
         }
     }
