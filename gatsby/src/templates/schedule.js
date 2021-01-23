@@ -1,8 +1,10 @@
 import React from 'react';
 import {graphql, useStaticQuery} from "gatsby";
 import styled from 'styled-components';
-import NavTabs from "../components/NavTabs";
+import NavTabs from "../components/SpeakersFilter";
 import Img from "gatsby-image";
+import speaker from '../../../sanity/schemas/speaker';
+import SpeakersFilter from '../components/SpeakersFilter';
 
 const SectionStyles = styled.section`
   width: 75rem;
@@ -68,49 +70,59 @@ const ImgStyles = styled(Img)`
 `;
 
 const ScheduleTemplate = () => {
-    const { speakers } = useStaticQuery(graphql`
-        query {
-            speakers: allSanitySpeaker {
-                nodes {
-                      confDays
-                      description
-                      topics {
-                        topic
-                      }
-                      image {
-                        asset {
-                          fluid(maxWidth: 200) {
-                            ...GatsbySanityImageFluid
-                          }
-                        }
-                      }
-                    }
-                   }
-                  }
-    `);
+    // // const { speakers } = useStaticQuery(graphql`
+    // //     query {
+    // //         speakers: allSanitySpeaker {
+    // //             nodes {
+    // //               description
+    // //               schedule {
+    // //                 confDay
+    // //                 speakerTopic
+    // //                 startSpeech
+    // //                 endSpeech
+    // //               }
+    // //               image {
+    // //                     asset {
+    // //                       fluid(maxWidth: 200) {
+    // //                         ...GatsbySanityImageFluid
+    // //                       }
+    // //                     }
+    // //                   }
+    // //                 }
+    // //                }
+    // //               }
+    // // `);
+    // const filteredArray = speakers.nodes.map(speaker => speaker.schedule.filter(scheduleItem => scheduleItem.confDay === 'Day 1')).flat();
+    // console.log(filteredArray);
     return (
         <SectionStyles>
             <h2 className='center'>Event Schedule</h2>
-            <NavTabs />
+            <SpeakersFilter />
+            {/* <NavTabs /> */}
             <ListStyles>
-                {
-                    speakers.nodes
-                        .filter(speaker => speaker.confDays.includes('day1'))
-                        .map(speaker => {
-                            return (
-                                <li>
-                                    <div>
-                                        <ImgStyles fluid={speaker.image.asset.fluid}/>
-                                    </div>
-                                    <div>
-                                        <time dateTime='10am to 10:30am'>10am to 10:30am</time>
-                                        <h4>{ speaker.topics[0].topic }</h4>
-                                        <p>{ speaker.description }</p>
-                                    </div>
-                                </li>
-                            )
-                        })
-                }
+                {/* {
+                
+                speakers.nodes
+                        .filter(speaker => speaker.schedule.some(scheduleItem => scheduleItem.confDay === 'Day 1'))
+                      .map(speaker => {
+                        const { speakerTopic, startSpeech, endSpeech } = speaker.schedule[0];
+                          return (
+                              <li>
+                                  <div>
+                                      <ImgStyles fluid={speaker.image.asset.fluid}/>
+                                  </div>
+                                  <div>
+                                      <time dateTime={startSpeech + 'to' + endSpeech}>{ startSpeech } to { endSpeech }</time>
+                                      <h4>{ speakerTopic }</h4>
+                                      <p>{ speaker.description }</p>
+                                  </div>
+                              </li>
+                          )
+                      })
+
+                   
+                    
+                } */}
             </ListStyles>
         </SectionStyles>
     )
