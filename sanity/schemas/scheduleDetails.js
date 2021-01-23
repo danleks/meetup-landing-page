@@ -4,7 +4,7 @@ import React from 'react';
 import TimeInput from '../components/TimeInput';
 
 // 2. List of conference days and topics
-const days = ['Day 1', 'Day 2', 'Day 3'];
+const days = ['day-1', 'day-2', 'day-3'];
 const topics = ['Paper Prototyping Applications', 'hands-on Web Audio', 'Conversion Rate Optimization Techniques in Ecommerce', 'Making Dog Food Part of a Balanced Diet', 'Web Fonts Performance', 'an Introduction to Touch and Pointer Events', 'Modular Design at Work', 'the Designer’s Guide to Being Essential'];
 
 // 3. Validate function which is invoked on user input
