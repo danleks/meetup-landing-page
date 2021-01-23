@@ -1,4 +1,4 @@
-const days = ['Day 1', 'Day 2', 'Day 3'];
+const days = ['Day 01', 'Day 02', 'Day 03'];
 
 export default {
     // Computer name
@@ -20,6 +20,17 @@ export default {
             name: 'date',
             title: 'Set the date',
             type: 'date',
+        },
+        {
+            title: 'Slug',
+            name: 'slug',
+            type: 'slug',
+            options: {
+                source: 'confDay',
+                slugify: input => input
+                                    .toLowerCase()
+                                    .replace(/\s+/g, '-')
+            }
         },
         {
             title: 'Speakers',
