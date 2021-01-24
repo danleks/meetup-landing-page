@@ -58,19 +58,19 @@ const LinkStyles = styled(Link)`
 const MENU_ITEMS = [
     {
         title: 'home',
-        link: '#home'
+        link: '/#home'
     },
     {
         title: 'speakers',
-        link: '#speakers'
+        link: '/#speakers'
     },
     {
         title: 'buy tickets',
-        link: '#tickets'
+        link: '/#tickets'
     },
     {
         title: 'schedule',
-        link: '#schedule'
+        link: '/#schedule'
     },
 ];
 
@@ -82,7 +82,10 @@ const Nav = () => {
                     MENU_ITEMS.map(item => {
                         return (
                             <li key={item.title}>
-                                <LinkStyles to={item.link} title={item.title}>
+                                <LinkStyles 
+                                    to={item.link} 
+                                    title={item.title}
+                                >
                                     <span className='title'>{ item.title }</span>
                                     <span className='dot'/>
                                 </LinkStyles>
