@@ -22,7 +22,8 @@ const SectionStyles = styled.section`
 const ListStyles = styled.ul`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 5rem;
+  margin-top: 7rem;
   
   @media (min-width: 992px) {
     grid-template-columns: 1fr 1fr;
@@ -69,60 +70,30 @@ const ImgStyles = styled(Img)`
     height: auto;
 `;
 
-const ScheduleTemplate = () => {
-    // // const { speakers } = useStaticQuery(graphql`
-    // //     query {
-    // //         speakers: allSanitySpeaker {
-    // //             nodes {
-    // //               description
-    // //               schedule {
-    // //                 confDay
-    // //                 speakerTopic
-    // //                 startSpeech
-    // //                 endSpeech
-    // //               }
-    // //               image {
-    // //                     asset {
-    // //                       fluid(maxWidth: 200) {
-    // //                         ...GatsbySanityImageFluid
-    // //                       }
-    // //                     }
-    // //                   }
-    // //                 }
-    // //                }
-    // //               }
-    // // `);
-    // const filteredArray = speakers.nodes.map(speaker => speaker.schedule.filter(scheduleItem => scheduleItem.confDay === 'Day 1')).flat();
-    // console.log(filteredArray);
+const ScheduleTemplate = ({ speakersData }) => {   
+  const speakers =  speakersData[0].speakers;
     return (
-        <SectionStyles>
+        <SectionStyles id='schedule'>
             <h2 className='center'>Event Schedule</h2>
             <SpeakersFilter />
-            {/* <NavTabs /> */}
             <ListStyles>
-                {/* {
-                
-                speakers.nodes
-                        .filter(speaker => speaker.schedule.some(scheduleItem => scheduleItem.confDay === 'Day 1'))
-                      .map(speaker => {
-                        const { speakerTopic, startSpeech, endSpeech } = speaker.schedule[0];
-                          return (
-                              <li>
-                                  <div>
-                                      <ImgStyles fluid={speaker.image.asset.fluid}/>
-                                  </div>
-                                  <div>
-                                      <time dateTime={startSpeech + 'to' + endSpeech}>{ startSpeech } to { endSpeech }</time>
-                                      <h4>{ speakerTopic }</h4>
-                                      <p>{ speaker.description }</p>
-                                  </div>
-                              </li>
-                          )
-                      })
-
-                   
-                    
-                } */}
+              {
+                speakers.map(speaker => {
+                  const { currentSpeaker: { description, image, name }, speakerTopic: { topic }, startSpeech, endSpeech } = speaker;
+                  return (
+                    <li>
+                        <div>
+                            <ImgStyles fluid={image.asset.fluid}/>
+                        </div>
+                        <div>
+                            <time dateTime={startSpeech + 'to' + endSpeech}>{ startSpeech } to { endSpeech }</time>
+                            <h4>{ topic }</h4>
+                            <p>{description }</p>
+                        </div>
+                    </li>
+                  )
+                })
+              }
             </ListStyles>
         </SectionStyles>
     )
