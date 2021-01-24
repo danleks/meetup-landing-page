@@ -46,7 +46,7 @@ const SectionStyles = styled.section`
 
 const TicketsTemplate = () => {
     return (
-        <SectionStyles>
+        <SectionStyles id='tickets'>
             <h2 className='center'>Buy Tickets</h2>
             <ul>
                 <li>
