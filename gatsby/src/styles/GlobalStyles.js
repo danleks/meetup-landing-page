@@ -4,6 +4,7 @@ const GlobalStyles = createGlobalStyle`
   :root {
     --blue: #016CC7;
     --red: #DD5138;
+    --green: #3c763d;
     --lightBlack: #404142;
     --midBlack: #3A3A3A;
     --black: #2A2A2A;
@@ -43,6 +44,14 @@ const GlobalStyles = createGlobalStyle`
     &:hover {
       color: var(--black);
     }
+
+    &.submit {
+      padding: 6px 1.2rem;
+      background-color: var(--yellow);
+      color: var(--black);
+      opacity: .8;
+      text-transform: uppercase;
+    }
   }
 
   .gatsby-image-wrapper img[src*=base64\\,] {
@@ -68,6 +77,11 @@ const GlobalStyles = createGlobalStyle`
   
   ul {
     padding: 0;
+  }
+
+  textarea {
+    width: 100%;
+    height: auto;
   }
 `;
 
