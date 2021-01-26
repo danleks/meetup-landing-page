@@ -5,6 +5,7 @@ import SpeakersTemplate from "../templates/speakers";
 import TicketsTemplate from "../templates/tickets";
 import ScheduleTemplate from "../templates/schedule";
 import { graphql } from 'gatsby';
+import ContactTemplate from '../templates/contact';
 
 const Index = ({ data, pageContext, location }) => {
   
@@ -21,6 +22,7 @@ const Index = ({ data, pageContext, location }) => {
         <SpeakersTemplate />
         <TicketsTemplate />
         <ScheduleTemplate speakersData={speakersData} />
+        <ContactTemplate />
     </>
   )
 }
