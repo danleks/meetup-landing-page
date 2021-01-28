@@ -9,7 +9,7 @@ const SectionStyles = styled.section`
     justify-content: center;
     align-items: center;
     padding: 4rem 3rem;
-    background-color: var(--black);
+    background-color: var(--midBlack);
 
     h2 {
         margin-bottom: 3rem;
