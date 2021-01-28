@@ -7,8 +7,11 @@ import speaker from '../../../sanity/schemas/speaker';
 import SpeakersFilter from '../components/SpeakersFilter';
 
 const SectionStyles = styled.section`
-  width: 75rem;
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    width: 75rem;
+  }
 
   @media (min-width: 992px) {
     width: 115rem;
