@@ -3,6 +3,7 @@ import 'normalize.css';
 import GlobalStyles from '../styles/GlobalStyles';
 import Typography from '../styles/Typography';
 import Nav from './Nav';
+import Footer from './Footer';
 
 const Layout = ({ children }) => {
     return (
@@ -11,7 +12,7 @@ const Layout = ({ children }) => {
             <Typography />
             <Nav />
                 { children }
-            {/* <Footer /> */}
+           <Footer />
         </div>
     )
 }
