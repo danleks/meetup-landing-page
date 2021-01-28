@@ -32,10 +32,13 @@ const FilterStyles = styled.ul`
     border-bottom: none;
     color: var(--black);
   }
-`;
 
-const LinkStyles = styled(Link)`
-  
+  span {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
 `;
 
 const SpeakersFilter = () => {
@@ -79,7 +82,8 @@ const SpeakersFilter = () => {
                   state={{position: window.pageYOffset }}
                   isCurrent={true}
                   >
-                  { `${conferenceDay.confDay} (${date} ${months[monthIndex]})` }
+                    { `${conferenceDay.confDay}` }
+                    <span>({`${date} ${months[monthIndex]}`})</span>
                 </Link>
               </li>
             )
